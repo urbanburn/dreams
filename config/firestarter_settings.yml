@@ -23,9 +23,9 @@ defaults: &defaults
   footer_logo: false
   creation_sidebar_welcome: true
   safetybag: true
-  disable_open_new_dream: <%= ENV['disable_open_new_dream'] or false %>
-  disable_edit_safetybag: <%= ENV['disable_edit_safetybag'] or false %>
-  disable_edit_budget: <%= ENV['disable_edit_budget'] or false %>
+  disable_open_new_dream: <%= ENV['DISABLE_OPEN_NEW_DREAM'] or false %>
+  disable_edit_safetybag: <%= ENV['DISABLE_EDIT_SAFETYBAG'] or false %>
+  disable_edit_budget: <%= ENV['DISABLE_EDIT_BUDGET'] or false %>
 
 development:
   <<: *defaults
