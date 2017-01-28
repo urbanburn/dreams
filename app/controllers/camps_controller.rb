@@ -146,6 +146,7 @@ class CampsController < ApplicationController
     if current_user
       @user_grant_limit = current_user.grants
     end
+    @detector = StringDirection::Detector.new(:dominant)
   end
 
   # Allow a user to join a particular camp.

@@ -373,3 +373,13 @@ body {
 .vertical-middle {
   vertical-align: middle !important;
 }
+
+p.auto-ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+p.auto-rtl {
+  direction: rtl;
+  text-align: right;
+}
