@@ -2,7 +2,7 @@ class CampsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :load_camp!, except: [:index, :new, :create]
   before_action :enforce_delete_permission!, only: [:destroy, :archive]
-
+  before_action :load_lang_detector, only: %i(show index)
 
   def index
     filter = params[:filterrific] || { sorted_by: 'updated_at_desc' }
@@ -146,7 +146,6 @@ class CampsController < ApplicationController
     if current_user
       @user_grant_limit = current_user.grants
     end
-    @detector = StringDirection::Detector.new(:dominant)
   end
 
   # Allow a user to join a particular camp.
@@ -209,4 +208,9 @@ class CampsController < ApplicationController
   rescue ActiveRecord::RecordInvalid
     false
   end
+
+  def load_lang_detector
+    @detector = StringDirection::Detector.new(:dominant)
+  end
 end
+
