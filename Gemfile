@@ -78,6 +78,9 @@ gem 'recaptcha', require: "recaptcha/rails"
 # Better distance_of_time_in_words
 gem 'dotiw'
 
+# rtl<>ltr automatically
+gem 'string-direction'
+
 group :production do
   # needed by herokus
   gem 'rails_12factor'
