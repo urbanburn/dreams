@@ -187,7 +187,7 @@
         <% if Rails.configuration.x.firestarter_settings["cocreation"] and @camp.cocreation.present? %>
             <div class="camp-description">
                 <b><%=t :form_cocreation_label %></b>
-                <%= simple_format(@camp.cocreation, class: "auto-#{@detector.direction(@camp.cocreation)}" ) %>) %>
+                <%= simple_format(@camp.cocreation, class: "auto-#{@detector.direction(@camp.cocreation)}" ) %>
             </div>
         <% end %>
 

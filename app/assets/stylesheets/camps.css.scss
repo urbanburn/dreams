@@ -374,12 +374,12 @@ body {
   vertical-align: middle !important;
 }
 
-p.auto-ltr {
+.auto-ltr {
   direction: ltr;
   text-align: left;
 }
 
-p.auto-rtl {
+.auto-rtl {
   direction: rtl;
   text-align: right;
 }
