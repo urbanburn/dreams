@@ -487,7 +487,7 @@ en:
   dont_miss_out:
     banner: Don't miss out! Only %{time} left to %{action}
     actions:
-      submit_dream: create a new dream
+      submit_dream: submit dreams and art funds
       safety_file: submit a safety file
   time:
     am: am
