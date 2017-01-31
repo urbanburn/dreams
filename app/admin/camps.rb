@@ -13,4 +13,8 @@ ActiveAdmin.register Camp do
   end
 
   sidebar :versionate, :partial => "layouts/version", :only => :show
+
+  permit_params do |params|
+    Camp.columns.map(&:name) - %w(id updated_at created_at)
+  end
 end
