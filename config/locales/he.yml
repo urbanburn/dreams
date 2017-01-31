@@ -423,7 +423,7 @@ he:
   dont_miss_out:
     banner: אל תפספסי! רק %{time} נותרו ל%{action}
     actions:
-      submit_dream: יצירת חלום
+      submit_dream: הגשת החלומות ובקשת מלגה
       safety_file: הגשת תיק בטיחות
   versionate:
     latest_version: "גרסה אחרונה"
