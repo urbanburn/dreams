@@ -109,6 +109,15 @@ and also the following env vars:
 * `GOOGLE_APPS_SCRIPT_FUNCTION='function-name'`
 * `GOOGLE_CLIENT_SECRETS=content_of_client_secret.json`
 
+1.Set the env `GOOGLE_DRIVE_INTEGRATION=true`
+2.Start with enabling the API on the google console. getting a token.
+Then set the `GOOGLE_CLIENT_SECRETS` variable
+3.Then go to https://console.developers.google.com/apis/credentials?project=YOUR-PROJECT-ID
+and copy the name of Oauth2 client Id - this will be the `GOOGLE_APPS_NAME` env variable
+4.Then inside your script there is the actual function name to call it is usually `createDream` - this is the `GOOGLE_APPS_SCRIPT_FUNCTION` env
+5.Finally leave the `GOOGLE_APPS_SCRIPT_TOKEN` empty. and then after you run your app for the first time. check the logs. you will see a url. this url will contain the actual token. then set the `GOOGLE_APPS_SCRIPT_TOKEN` to be that token
+
+
 ## Ability to Show/Edit Point of Contact
 We've added the ability to show a contact person from art-department for the dream-creator in the dream page. This field is editable by admin/guide users only.
 
