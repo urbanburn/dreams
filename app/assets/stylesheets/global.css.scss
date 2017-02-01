@@ -95,6 +95,9 @@ $font-weight-bold: 700;
   outline: none;
 }
 
+::-moz-selection { background: $c-pinky; color: white; }
+::selection { background: $c-pinky; color: white; }
+
 html, body {
   min-height: 100vh;
 }
