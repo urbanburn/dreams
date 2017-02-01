@@ -1,12 +1,13 @@
-[![Build Status](https://travis-ci.org/Midburn/dreams.svg?branch=master)](https://travis-ci.org/Midburn/dreams)
+[![Build Status](https://travis-ci.org/metaburn/dreams.svg?branch=master)](https://travis-ci.org/metaburn/dreams)
 
-# Midburn Dreams
+# Metaburn Dreams
 
-This is a platform to plan co-created events. It was originally created for Urban Burn Stockholm in 2016 and was then used for The Borderland in 2016 and For Midburnerot 2016. It's being continuously and sporadically developed by a rag-tag team and will probably always be in beta. This version was the adoption of the Midburn - Israeli regional community. You can see it in action here: 
-http://dreams.midburn.org
-and the Midburnerot version:
-http://dreams.midburnerot.com
-and the original system here:
+This is a platform to plan co-created events. It was originally created for Urban Burn Stockholm in 2016 and was then used for The Borderland in 2016 and For Midburnerot 2016 then Midburn 2017. It's being continuously and sporadically developed by a rag-tag team and will probably always be in beta. This version is set to be the mother of all versions.
+You can see it in action here: 
+http://dreams.midburn.org/?lang=en
+The Midburnerot version:
+http://dreams.midburnerot.com/?lang=en
+Borderland version:
 http://dreams.theborderland.se/
 
 ## To get started
@@ -24,6 +25,9 @@ To get all the deps and the database set up properly. To start the server:
     bundle exec rails s
 
 Now rails will listen at `localhost:3000` for your requests.
+
+Register a new user
+http://localhost:3000/users/sign_up
 
 Go to `dreams/new` to create a new dream and to `/dreams` to see a list of camps.
 
@@ -81,11 +85,16 @@ Make sure you change the username, password, token and event id
 
 ## Production
 
+#### Puma
+We are using puma for the webserver and usually use Heroku to deploy it
+The default `WEB_CONCURRENCY=1` if you have ~1GB of mem we recommend on `WEB_CONCURRENCY=2`
+though we did have some plans on using Dokku all of the repos right now are on heroku
+
 #### Email
 To get the mailing system working on Heroku -
 * Add Sendgrid as a Resource (this will automatically set SENDGRID_USERNAME & SENDGRID_PASSWORD)
-* Update the email from using:
-`heroku config:set EMAIL_FROM=galbra@gmail.com`
+* Update the `EMAIL_FROM` using:
+`heroku config:set EMAIL_FROM=metaburndreams@gmail.com`
 
 #### Image upload
 To set up the image upload make sure to create the S3 user and set the following heroku env variables
@@ -117,8 +126,10 @@ and copy the name of Oauth2 client Id - this will be the `GOOGLE_APPS_NAME` env 
 4.Then inside your script there is the actual function name to call it is usually `createDream` - this is the `GOOGLE_APPS_SCRIPT_FUNCTION` env
 5.Finally leave the `GOOGLE_APPS_SCRIPT_TOKEN` empty. and then after you run your app for the first time. check the logs. you will see a url. this url will contain the actual token. then set the `GOOGLE_APPS_SCRIPT_TOKEN` to be that token
 
+## Env Settings
+You can copy .env-example to .env file and use it to check which ENV vars we are using
 
-## Ability to Show/Edit Point of Contact
+#### Ability to Show/Edit Point of Contact
 We've added the ability to show a contact person from art-department for the dream-creator in the dream page. This field is editable by admin/guide users only.
 
 You will need to set the following env var:
