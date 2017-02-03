@@ -11,10 +11,12 @@
         </div>
         <div>
           <div class="header-nav col-xs-12">
-            <% if I18n.locale == I18n.default_locale %>
-              <%= link_to "EN", :lang=>'en'%>
-            <% else %>
-              <%= link_to "עב", :lang=>'he'%>
+            <% if Rails.application.config.x.firestarter_settings['multi_lang_support'] %>
+              <% if I18n.locale == I18n.default_locale %>
+                <%= link_to "EN", :lang=>'en'%>
+              <% else %>
+                <%= link_to "עב", :lang=>'he'%>
+              <%end%>
             <%end%>
             <%= link_to t("top_headline_faq"), '/pages/faq-'+I18n.locale.to_s %>
             <%= link_to t("how_can_i_help_title"), howcanihelp_path %>
