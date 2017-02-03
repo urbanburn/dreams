@@ -126,11 +126,9 @@ class Camp < ActiveRecord::Base
     where.not(camps: { cocreation: nil }).where.not(camps: { cocreation: '' })
   }
 
-  # before_save do
-    # No more - at this stage we're no longer aligning the budget
-    # keep it here so we know that when we begin a new system we want this to happen
-    # align_budget
-  #end
+  before_save do
+    align_budget
+  end
 
   def grants_received
     return self.grants.sum(:amount)

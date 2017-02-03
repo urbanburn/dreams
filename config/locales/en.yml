@@ -136,6 +136,17 @@ en:
   form_neighbors_label: Who would your perfect neighbors be?
   form_neighbors_guidetext_html: What kind of midburners would you like as neighbors?
     Quiet, Deep playa, Near camps, Near sounds camps, Far away from sound camps
+
+  form_artgrants_headline: Art grant information
+  form_artgrants_text_html: <p>If you're not looking for an art grant, leave these fields blank.</p><p>Art grants are given by the Metaburn community. Each Metaburner has 10 art-grants to hand out. You can give all your grants to one project or spread them around. Once a grant has been gifted to a dream, it can't be taken back.</p>
+  form_minigrants_realcurrency_label: "Minumum number of grants needed:"
+  form_minigrants_realcurrency_guidetext_html: Necessary minimum budget level, below which you won't get funded.
+  form_maxigrants_realcurrency_label: "Grants needed to fully fund dream:"
+  form_maxigrants_realcurrency_guidetext_html: "How many grants you need to fully fund your project."
+  form_budgetplan_label: "Budget overview"
+  form_budgetplan_guidetext_html: "How will you use your budget? Describe your costs, not too specific, not too vague, perfectly balanced."
+
+
   form_spec_headline: Technical information and Visibility
   form_spec_guidelines: Please note that in order to complete the registration process you must upload, imaging, sketches and other files via "Upload photos" in the personal area. Requests which fail to meet this criteria will not be considered.
   form_spec_physical_description_label: Please insert physical descriptions and specifications
@@ -566,8 +577,8 @@ en:
         updated_at: Update
         minfunded: Reached minimum funding
         fullyfunded: Reached maximum funding
-        minbudget_realcurrency: Minimum funding in NIS
-        maxbudget_realcurrency: Maximum funding in NIS
+        minbudget_realcurrency: Minimum funding in Real Currency
+        maxbudget_realcurrency: Maximum funding in Real Currency
         safetybag_crewsize: Size of the team
         safetybag_plan: Work plan/schedule
         safetybag_builder: Construction supervisior

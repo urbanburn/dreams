@@ -93,9 +93,6 @@
                                 </div>
 
                                 <!-- If user grants are > 0, allow user to asign them -->
-                                <!-- Show a form with a drop-down containing user grants -->
-                                <!-- Current iteration shows a number field -->
-
                                 <% if @camp.grantingtoggle %>
                                     <% if current_user && current_user.grants > 0 && !@camp.fullyfunded %>
 
