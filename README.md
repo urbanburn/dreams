@@ -1,13 +1,13 @@
-[![Build Status](https://travis-ci.org/metaburn/dreams.svg?branch=master)](https://travis-ci.org/metaburn/dreams)
+[![Build Status](https://travis-ci.org/Metaburn/dreams.svg?branch=master)](https://travis-ci.org/Metaburn/dreams)
 
 # Metaburn Dreams
 
 This is a platform to plan co-created events. It was originally created for Urban Burn Stockholm in 2016 and was then used for The Borderland in 2016 and For Midburnerot 2016 then Midburn 2017. It's being continuously and sporadically developed by a rag-tag team and will probably always be in beta. This version is set to be the mother of all versions.
 You can see it in action here: 
-http://dreams.midburn.org/?lang=en
-The Midburnerot version:
+* Midburn version: http://dreams.midburn.org/?lang=en
+* Midburnerot version:
 http://dreams.midburnerot.com/?lang=en
-Borderland version:
+* Borderland version:
 http://dreams.theborderland.se/
 
 ## To get started
