@@ -126,6 +126,20 @@ class Camp < ActiveRecord::Base
     where.not(camps: { cocreation: nil }).where.not(camps: { cocreation: '' })
   }
 
+  # Used by ActiveAdmin
+  scope :default_select, lambda { |except=[]|
+    tn = table_name
+    select((column_names-except).map { |c| "#{tn}.#{c}" }.join(', '))
+  }
+
+  scope :displayed, -> {
+    default_select.joins("LEFT JOIN roles ON (roles.identifier = '#{:manager}')")
+        .joins("LEFT JOIN people ON (people.camp_id = camps.id)")
+        .joins("LEFT JOIN people_roles pr ON (pr.role_id = roles.id)")
+        .where('people.id = pr.person_id')
+        .select('people.name manager_name, people.email manager_email, people.phone_number manager_phone')
+  }
+
   # before_save do
     # No more - at this stage we're no longer aligning the budget
     # keep it here so we know that when we begin a new system we want this to happen
