@@ -179,17 +179,17 @@
       = t("form_neighbors_guidetext_html") 
 
   %br
-  .header-heading
-    = t("form_project_management_crew")
-  
-  #responsibles
-    = form.fields_for :people do |person|
-      = render 'person_fields', :f => person, :camp_id => @camp.id
- 
-  .links.col-xs-12
-    = link_to_add_association t('add_a_new_person'), form, :people, render_options: { locals: { camp_id: @camp.id } }, class: 'btn btn-success'
-    %br
-    %br
+  .row
+    .header-heading
+      = t("form_project_management_crew")
+    
+    #responsibles
+      = form.fields_for :people do |person|
+        = render 'person_fields', :f => person, :camp_id => @camp.id
+   
+    .links.col-xs-12
+      = link_to_add_association t('add_a_new_person'), form, :people, render_options: { locals: { camp_id: @camp.id } }, class: 'btn btn-success'
+      %br
 
   - if Rails.configuration.x.firestarter_settings["safetybag"]
     
