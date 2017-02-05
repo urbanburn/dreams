@@ -59,7 +59,10 @@ he:
   header_faq_link: "היי את - האם קראת את עמוד שאלות ותשובות?"
   footer_left_html: "מידברן זאת קהילה השתתפותית שבה אנחנו מיצרים ביחד אירועים ומפגשים כפרוטוטייפים לחלומותינו. זה כמו מיכל ריק, פתוח ליוזמתך. זאת הזמנה לשחק, להרהר, ולתקשר. אם יש לכם שאלות, אתם מוזמנים לשאול בקבוצת הפייסבוק שלנו. "
   footer_right_html: " בדצמבר 2016 תתכנס קהילת מידברן בפארק ירוחם, ישראל. זה פסטיבל שבו כל האירגון והתוכן היצירתי נעשה על ידי המשתתפים. האירוע מיועד למשתתפים בלבד, ולא פתוחה לצופים."
-  footer_html: "המערכת נכתבה במקור על-ידי בורדרלנד <a href='https://github.com/aerugo/firestarter'>(קוד מקור)</a> אומצה על-ידי לשכת החלומות מידברנרות, נכתבה ב<a href='https://github.com/midburn/dreams'>קוד פתוח</a> ומוגשת ב <span>❤</span> <a href='http://dreams.midburn.org/pages/humans'>האנשים שיצרו את המערכת</a>."
+  footer_html: "המערכת נכתבה במקור על-ידי בורדרלנד <a href='https://github.com/aerugo/firestarter'>(קוד מקור)</a>
+      אומצה על-ידי לשכת החלומות מידברנרות, נכתבה ב<a href='https://github.com/midburn/dreams'>קוד פתוח</a>
+      ומוגשת ב <span>❤</span> <a href='http://dreams.midburn.org/pages/humans'>האנשים שיצרו את המערכת</a>.
+      <br /><a href='http://midburn.org/he-terms-and-privacy/'>תנאי שימוש באתר ומדיניות פרטיות</a>"
   
   errors_str: "שגיאות"
 
@@ -601,6 +604,11 @@ he:
         projectmgmt_is_dream_near_theme_camp: :form_project_management_is_dream_near_theme_camp
         projectmgmt_dream_pre_construction_site: :form_project_management_dream_pre_construction_site
         dream_point_of_contact_email: :form_dream_point_of_contact_email
+        google_drive_folder_path: תיקייה בדרייב
+        google_drive_budget_file_path: מסמך תקציב
+        en_name: שם באנגלית
+        en_subtitle: תקציר באנגלית
+        id: מזהה
       person: &person
         name: 'שם'
         email: "אימייל"

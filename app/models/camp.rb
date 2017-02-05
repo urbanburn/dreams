@@ -126,6 +126,20 @@ class Camp < ActiveRecord::Base
     where.not(camps: { cocreation: nil }).where.not(camps: { cocreation: '' })
   }
 
+  # Used by ActiveAdmin
+  scope :default_select, lambda { |except=%w(safetybag_firstMemberName safetybag_firstMemberEmail safetybag_secondMemberName safetybag_secondMemberEmail)|
+    tn = table_name
+    select((column_names-except).map { |c| "#{tn}.#{c}" }.join(', '))
+  }
+
+  scope :displayed, -> {
+    default_select.joins("LEFT JOIN roles ON (roles.identifier = '#{:manager}')")
+        .joins("LEFT JOIN people ON (people.camp_id = camps.id)")
+        .joins("LEFT JOIN people_roles pr ON (pr.role_id = roles.id)")
+        .where('people.id = pr.person_id')
+        .select('people.name manager_name, people.email manager_email, people.phone_number manager_phone')
+  }
+
   before_save do
     align_budget
   end
