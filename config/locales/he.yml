@@ -601,6 +601,11 @@ he:
         projectmgmt_is_dream_near_theme_camp: :form_project_management_is_dream_near_theme_camp
         projectmgmt_dream_pre_construction_site: :form_project_management_dream_pre_construction_site
         dream_point_of_contact_email: :form_dream_point_of_contact_email
+        google_drive_folder_path: תיקייה בדרייב
+        google_drive_budget_file_path: מסמך תקציב
+        en_name: שם באנגלית
+        en_subtitle: תקציר באנגלית
+        id: מזהה
       person: &person
         name: 'שם'
         email: "אימייל"
