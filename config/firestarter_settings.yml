@@ -2,15 +2,15 @@ defaults: &defaults
   additional_info: true
   contact_phone: true
   description: true
-  electricity: false
-  light: false
-  fire: false
-  noise: false
+  electricity: true
+  light: true
+  fire: true
+  noise: true
   nature: false
   moop: false
   plan: false
   cocreation: true
-  neighbors: false
+  neighbors: true
   recycling: false
   budgetplan: true
   seeking_members: true
@@ -24,7 +24,6 @@ defaults: &defaults
   footer_logo: false
   creation_sidebar_welcome: true
   safetybag: false
-  crew_size:  <%= ENV['CREW_SIZE'] or false %>
   person_early_arrival:  <%= ENV['PERSON_EARLY_ARRIVAL'] or false %>
   person_has_ticket:  <%= ENV['PERSON_HAS_TICKET'] or false %>
   multi_lang_support: <%= ENV['MULTI_LANG_SUPPORT'] or false %>

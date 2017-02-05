@@ -140,11 +140,9 @@ class Camp < ActiveRecord::Base
         .select('people.name manager_name, people.email manager_email, people.phone_number manager_phone')
   }
 
-  # before_save do
-    # No more - at this stage we're no longer aligning the budget
-    # keep it here so we know that when we begin a new system we want this to happen
-    # align_budget
-  #end
+  before_save do
+    align_budget
+  end
 
   def grants_received
     return self.grants.sum(:amount)
