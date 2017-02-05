@@ -119,9 +119,6 @@ group :development do
   # Awesome print helps us print!
   gem 'awesome_print'
 
-  # Print a log when i18n lookup fails
-  gem 'i18n-debug'
-
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', '~> 0.4.0', group: :doc
 end
