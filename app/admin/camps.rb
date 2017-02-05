@@ -14,6 +14,15 @@ ActiveAdmin.register Camp do
     column :manager_phone
   end
 
+  csv do
+    (Camp.column_names - EXCLUDED).each do |cn|
+      column cn
+    end
+    column :manager_name
+    column :manager_email
+    column :manager_phone
+  end
+
   member_action :show do
       @camp = Camp.includes(versions: :item).find(params[:id])
       @versions = @camp.versions 
