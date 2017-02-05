@@ -127,7 +127,7 @@ class Camp < ActiveRecord::Base
   }
 
   # Used by ActiveAdmin
-  scope :default_select, lambda { |except=[]|
+  scope :default_select, lambda { |except=%w(safetybag_firstMemberName safetybag_firstMemberEmail safetybag_secondMemberName safetybag_secondMemberEmail)|
     tn = table_name
     select((column_names-except).map { |c| "#{tn}.#{c}" }.join(', '))
   }
