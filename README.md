@@ -89,7 +89,9 @@ Make sure you change the username, password, token and event id
 
 From command line run
 
-heroku run rake db:migrate --app <<APP_NAME>>
+```
+heroku run rake db:migrate db:seed --app <<APP_NAME>>
+```
 
 #### Puma
 We are using puma for the webserver and usually use Heroku to deploy it
