@@ -85,6 +85,12 @@ Make sure you change the username, password, token and event id
 
 ## Production
 
+### Creating initial database
+
+From command line run
+
+heroku run rake db:migrate --app <<APP_NAME>>
+
 #### Puma
 We are using puma for the webserver and usually use Heroku to deploy it
 The default `WEB_CONCURRENCY=1` if you have ~1GB of mem we recommend on `WEB_CONCURRENCY=2`
@@ -141,3 +147,4 @@ You will need to set the following env var:
 There is a feature that shows a notification to users - reminder of important dates.
 You can alter `lockdown.yml` file with your important dates and then change in `en.xml` `dont_miss_out->actions->action_name`
 It will be reminded to your users at the `Me` page. `View Dream` & `Edit Dream` page
+
