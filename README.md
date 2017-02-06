@@ -129,6 +129,8 @@ and copy the name of Oauth2 client Id - this will be the `GOOGLE_APPS_NAME` env 
 ## Env Settings
 You can copy .env-example to .env file and use it to check which ENV vars we are using
 
+To install ENV vars in a quick way check out https://github.com/xavdid/heroku-config
+
 #### Ability to Show/Edit Point of Contact
 We've added the ability to show a contact person from art-department for the dream-creator in the dream page. This field is editable by admin/guide users only.
 
