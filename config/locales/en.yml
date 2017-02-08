@@ -248,6 +248,9 @@ en:
   form_dream_scholarship_post_desc: Here are some useful links for your convenience
   form_dream_scholarship_post_desc_criterions: Criteria
   form_dream_scholarship_post_desc_faq: FAQ
+
+  form_click_to_edit_html: <a>Click to edit</a>
+
   form_safety_head: Safety Portfolio
   form_safety_head_description: Safety Portfolio and placement on the Playa must be
     completed before March 15, 2017
