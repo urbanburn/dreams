@@ -438,6 +438,7 @@ he:
     no_older_version: "אין גרסאות ישנות"
 
   activeadmin:
+    info: "מידע"
     recent_updated: "תוכן שעודכן לאחרונה"
     item: "חלום"
     modified_at: "שונה"

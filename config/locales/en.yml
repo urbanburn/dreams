@@ -479,6 +479,7 @@ en:
     go_to_current_version: Go to current version
     no_older_version: No older version found
   activeadmin:
+    info: Info
     recent_updated: Recently Updated
     item: Dream
     modified_at: Modified at
