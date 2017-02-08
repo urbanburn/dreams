@@ -131,7 +131,7 @@ class CampsController < ApplicationController
       end
     else
       respond_to do |format|
-        flash.now[:notice] = "#{t:errors_str}: #{@camp.errors.full_messages.uniq.join(', ')}"
+        flash.now[:alert] = "#{t:errors_str}: #{@camp.errors.full_messages.uniq.join(', ')}"
         format.html { render :action => "edit" }
         format.json { respond_with_bip(@camp) }
       end

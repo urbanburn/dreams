@@ -19,6 +19,8 @@
 //= require cocoon
 //= require best_in_place
 //= require best_in_place.jquery-ui
+//= require jquery.purr
+//= require best_in_place.purr
 $(function() {
 	//Fix the hidden element issue on some chrome browsers
   	window.scroll(0,1);

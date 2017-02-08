@@ -383,3 +383,14 @@ body {
   direction: rtl;
   text-align: right;
 }
+
+.purr {
+  @extend .alert;
+  position: fixed;
+  top: 10px;
+  right: 100px;
+  width: 250px;
+  padding: 20px;
+  // border: solid 2px #C66;
+  &:first-letter { text-transform: uppercase; }
+}
