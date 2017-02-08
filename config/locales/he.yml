@@ -293,6 +293,8 @@ he:
   update_dream: "עדכן חלום!"
   edit_dream: "ערוך חלום"
   manage_images: "ערוך תמונות"
+  open_dream_for_guide_edit: "פתח חלום לעריכת מנהל"
+  open_dream_for_guide_edit_view_only: "נעל חלום לצפייה בלבד"
 
   give_grants: "כמה לבבות?"
   i_gift_thee_grants: "תרמו לחלום"

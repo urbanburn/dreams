@@ -31,6 +31,7 @@ class CampsController < ApplicationController
   end
 
   def edit
+    @just_view = params[:just_view]
   end
 
   def create

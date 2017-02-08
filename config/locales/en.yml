@@ -363,6 +363,8 @@ en:
   update_dream: Update Dream!
   edit_dream: Edit Dream
   manage_images: Manage Images
+  open_dream_for_guide_edit: Open dream for guide editing
+  open_dream_for_guide_edit_view_only: Lock dream for View only
   give_grants: Give Grants
   i_gift_thee_grants: Donate to dream
   no_granting_yet: No granting for this dream yet!
