@@ -17,7 +17,8 @@
 //= require blueimp-gallery-all
 //= require filterrific/filterrific-jquery
 //= require cocoon
-
+//= require best_in_place
+//= require best_in_place.jquery-ui
 $(function() {
 	//Fix the hidden element issue on some chrome browsers
   	window.scroll(0,1);

@@ -124,11 +124,17 @@ class CampsController < ApplicationController
       if params[:done] == '1'
         redirect_to camp_path(@camp)
       else
-        redirect_to edit_camp_path(id: @camp.id)
+        respond_to do |format|
+          format.html { redirect_to edit_camp_path(id: @camp.id) }
+          format.json { respond_with_bip(@camp) }
+        end
       end
     else
-      flash.now[:notice] = "#{t:errors_str}: #{@camp.errors.full_messages.uniq.join(', ')}"
-      render :edit
+      respond_to do |format|
+        flash.now[:notice] = "#{t:errors_str}: #{@camp.errors.full_messages.uniq.join(', ')}"
+        format.html { render :action => "edit" }
+        format.json { respond_with_bip(@camp) }
+      end
     end
   end
 

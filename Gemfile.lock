@@ -66,6 +66,9 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     blueimp-gallery (2.11.0.1)
@@ -381,6 +384,7 @@ DEPENDENCIES
   activeadmin!
   awesome_print
   aws-sdk (< 2)
+  best_in_place (~> 3.0.1)
   blueimp-gallery
   byebug
   cancan
