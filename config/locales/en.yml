@@ -80,7 +80,6 @@ en:
   form_dream_website_short: The dream website
   
   form_dream_point_of_contact_email: Your contact person from Art Department
-  dream_safety_file_comments_title: Safety File Comments
   dream_safety_file_comments_nop_message: Hurray! Nothing for you to update right now...
   dream_safety_file_comments_update: Update Comments
 
@@ -655,6 +654,7 @@ en:
         projectmgmt_is_theme_camp_dream: :form_project_management_is_theme_camp_dream
         projectmgmt_is_dream_near_theme_camp: :form_project_management_is_dream_near_theme_camp
         projectmgmt_dream_pre_construction_site: :form_project_management_dream_pre_construction_site
+        safety_file_comments: Safety File Comments
       person: &person
         name: Name
         email: Email
