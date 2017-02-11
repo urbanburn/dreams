@@ -196,7 +196,7 @@ class CampsController < ApplicationController
   end
 
   def enforce_guide!
-    if (!current_user.admin) || (!current_user.guide)
+    if (!current_user.admin) && (!current_user.guide)
       flash[:alert] = "#{t:security_cant_delete_dreams_you_dont_own}"
       redirect_to camp_path(@camp)
     end
