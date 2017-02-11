@@ -20,6 +20,8 @@ class Camp < ActiveRecord::Base
   
   accepts_nested_attributes_for :people, :roles, allow_destroy: true
 
+  acts_as_taggable
+
   validates :creator, presence: true
   validates :name, presence: true
   validates :subtitle, presence: true
