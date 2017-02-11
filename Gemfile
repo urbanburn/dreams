@@ -81,6 +81,9 @@ gem 'dotiw'
 # rtl<>ltr automatically
 gem 'string-direction'
 
+# Tag dreams
+gem 'acts-as-taggable-on', '~> 4.0'
+
 group :production do
   # needed by herokus
   gem 'rails_12factor'

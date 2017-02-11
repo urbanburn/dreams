@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     post 'archive', on: :member
     patch 'toggle_granting', on: :member
     patch 'update_grants', on: :member
+    patch 'tag', on: :member
   end
 
   get '/pages/:page' => 'pages#show'

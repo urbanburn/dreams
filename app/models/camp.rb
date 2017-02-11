@@ -20,6 +20,8 @@ class Camp < ActiveRecord::Base
   
   accepts_nested_attributes_for :people, :roles, allow_destroy: true
 
+  acts_as_taggable
+
   validates :creator, presence: true
   validates :name, presence: true
   validates :subtitle, presence: true
@@ -138,6 +140,10 @@ class Camp < ActiveRecord::Base
         .joins("LEFT JOIN people_roles pr ON (pr.role_id = roles.id)")
         .where('people.id = pr.person_id')
         .select('people.name manager_name, people.email manager_email, people.phone_number manager_phone')
+  }
+
+  scope :displayed_with_tags, -> {
+    displayed.includes(:tags)
   }
 
   # before_save do

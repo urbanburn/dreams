@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170211082722) do
+ActiveRecord::Schema.define(version: 20170211131221) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     :index=>{:name=>"index_active_admin_comments_on_namespace"}
@@ -198,6 +198,25 @@ ActiveRecord::Schema.define(version: 20170211082722) do
 
   create_table "roles", force: :cascade do |t|
     t.string "identifier"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id",        :index=>{:name=>"index_taggings_on_tag_id"}
+    t.integer  "taggable_id",   :index=>{:name=>"index_taggings_on_taggable_id"}
+    t.string   "taggable_type", :index=>{:name=>"index_taggings_on_taggable_type"}
+    t.integer  "tagger_id",     :index=>{:name=>"index_taggings_on_tagger_id"}
+    t.string   "tagger_type"
+    t.string   "context",       :limit=>128, :index=>{:name=>"index_taggings_on_context"}
+    t.datetime "created_at"
+  end
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], :name=>"taggings_idx", :unique=>true
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name=>"index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["taggable_id", "taggable_type", "tagger_id", "context"], :name=>"taggings_idy"
+  add_index "taggings", ["tagger_id", "tagger_type"], :name=>"index_taggings_on_tagger_id_and_tagger_type"
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name",           :index=>{:name=>"index_tags_on_name", :unique=>true}
+    t.integer "taggings_count", :default=>0
   end
 
   create_table "tickets", force: :cascade do |t|
