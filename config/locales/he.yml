@@ -421,6 +421,8 @@ he:
   no_text: "לא"
   or_text: "או"
 
+  tags_saved: 'התגיות נשמרו בהצלחה'
+
   recaptcha:
     errors:
       verification_failed: 'נראה שאתה רובוט-ברנר. האימות נכשל. נסה שנית'
@@ -613,6 +615,7 @@ he:
         en_name: שם באנגלית
         en_subtitle: תקציר באנגלית
         id: מזהה
+        tags: תגיות
       person: &person
         name: 'שם'
         email: "אימייל"
@@ -810,3 +813,4 @@ he:
       x_seconds:
         one: שניה אחת
         other: "%{count} שניות"
+  form_tags: "תגיות"

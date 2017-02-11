@@ -2,6 +2,7 @@ class CampsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :load_camp!, except: [:index, :new, :create]
   before_action :enforce_delete_permission!, only: [:destroy, :archive]
+  before_action :enforce_guide!, only: %i(tag)
   before_action :load_lang_detector, only: %i(show index)
 
   def index
@@ -132,6 +133,13 @@ class CampsController < ApplicationController
     end
   end
 
+  def tag
+    @camp.update_attributes(tag_list: params.require(:camp).require(:tag_list))
+
+    flash[:notice] = "#{t:tags_saved}"
+    redirect_to camp_path(@camp)
+  end
+
   def destroy
     @camp.destroy!
 
@@ -184,6 +192,13 @@ class CampsController < ApplicationController
     if @camp.nil?
       flash[:alert] = t('dream_not_found')
       redirect_to camps_path
+    end
+  end
+
+  def enforce_guide!
+    if (!current_user.admin) || (!current_user.guide)
+      flash[:alert] = "#{t:security_cant_delete_dreams_you_dont_own}"
+      redirect_to camp_path(@camp)
     end
   end
 
