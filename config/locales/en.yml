@@ -461,6 +461,7 @@ en:
     tried gifting %{granted} grants. you have %{current_user_grants}. nice try.
   security_cant_delete_dreams_you_dont_own: One cannot delete dreams he dont own -
     hacker come join us
+  security_cant_tag_dreams_you_dont_own: Only guides can tag dreams. Come hack with us!
   security_cant_edit_dreams_you_dont_own: One cannot delete dreams he dont own - hacker
     come join us
   security_cant_change_images_you_dont_own: One cannot change image he dont own - hacker come join us
