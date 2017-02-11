@@ -142,6 +142,10 @@ class Camp < ActiveRecord::Base
         .select('people.name manager_name, people.email manager_email, people.phone_number manager_phone')
   }
 
+  scope :displayed_with_tags, -> {
+    displayed.includes(:tags)
+  }
+
   # before_save do
     # No more - at this stage we're no longer aligning the budget
     # keep it here so we know that when we begin a new system we want this to happen
