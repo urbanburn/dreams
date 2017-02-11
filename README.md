@@ -123,3 +123,9 @@ We've added the ability to show a contact person from art-department for the dre
 
 You will need to set the following env var:
 * `SHOW_POINT_OF_CONTACT=true`
+
+## Ability to Show/Edit Safety File Comments
+We've added the ability to show safety file comments for the dream-creator in the dream page. This field is editable by admin/guide users only.
+
+You will need to set the following env var:
+* `SHOW_SAFETY_FILE_COMMENTS=true`
