@@ -9,9 +9,12 @@ ActiveAdmin.register Camp do
     (Camp.column_names - EXCLUDED).each do |cn|
       column I18n.t("activerecord.attributes.camp.#{cn}"), cn
     end
-    column :manager_name
-    column :manager_email
-    column :manager_phone
+    %i(manager_name manager_email manager_phone).each do |f|
+      column(f) { |camp|
+        camp[f].is_a?(Array) ? camp[f].join(', ') : camp[f]
+      }
+    end
+
     column(:tags) { |camp|
       camp.tags.collect(&:name).join(', ')
     }
@@ -21,9 +24,11 @@ ActiveAdmin.register Camp do
     (Camp.column_names - EXCLUDED).each do |cn|
       column cn
     end
-    column :manager_name
-    column :manager_email
-    column :manager_phone
+    %i(manager_name manager_email manager_phone).each do |f|
+      column(f) { |camp|
+        camp[f].is_a?(Array) ? camp[f].join(', ') : camp[f]
+      }
+    end
     Camp.tag_counts.map(&:name).sort_by(&:downcase).each do |t|
       column(t) { |camp|
         camp.tags.collect(&:name).include?(t)
