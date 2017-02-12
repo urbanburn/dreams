@@ -3,7 +3,7 @@
   <title><%= browser_title %></title>
 <% end %>
 
-<% if current_user && (@camp.creator == current_user or current_user.admin)%>
+<% if current_user && (@camp.creator == current_user or current_user.admin or current_user.guide)%>
 	<%= render 'form' %>
 
     <div id="footer-bar" dir=<%=t :html_direction %>>
