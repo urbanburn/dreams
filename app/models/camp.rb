@@ -140,6 +140,7 @@ class Camp < ActiveRecord::Base
         .joins("LEFT JOIN people_roles pr ON (pr.role_id = roles.id)")
         .where('people.id = pr.person_id')
         .select('people.name manager_name, people.email manager_email, people.phone_number manager_phone')
+        .group('camps.id')
   }
 
   scope :displayed_with_tags, -> {
