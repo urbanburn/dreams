@@ -116,7 +116,7 @@ class CampsController < ApplicationController
   end
 
   def update
-    if (@camp.creator != current_user) and (!current_user.admin)
+    if (@camp.creator != current_user) and !current_user.admin and !current_user.guide
       flash[:alert] = "#{t:security_cant_edit_dreams_you_dont_own}"
       redirect_to camp_path(@camp) and return
     end
