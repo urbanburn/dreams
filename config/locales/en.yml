@@ -80,6 +80,8 @@ en:
   form_dream_website_short: The dream website
   
   form_dream_point_of_contact_email: Your contact person from Art Department
+  dream_safety_file_comments_nop_message: Hurray! Nothing for you to update right now...
+  dream_safety_file_comments_update: Update Comments
 
   form_project_management: Project Management
   form_project_management_crew: Team Members
@@ -464,6 +466,7 @@ en:
     tried gifting %{granted} grants. you have %{current_user_grants}. nice try.
   security_cant_delete_dreams_you_dont_own: One cannot delete dreams he dont own -
     hacker come join us
+  security_cant_tag_dreams_you_dont_own: Only guides can tag dreams. Come hack with us!
   security_cant_edit_dreams_you_dont_own: One cannot delete dreams he dont own - hacker
     come join us
   security_cant_change_images_you_dont_own: One cannot change image he dont own - hacker come join us
@@ -657,6 +660,7 @@ en:
         projectmgmt_is_theme_camp_dream: :form_project_management_is_theme_camp_dream
         projectmgmt_is_dream_near_theme_camp: :form_project_management_is_dream_near_theme_camp
         projectmgmt_dream_pre_construction_site: :form_project_management_dream_pre_construction_site
+        safety_file_comments: Safety File Comments
       person: &person
         name: Name
         email: Email
@@ -777,3 +781,4 @@ en:
       too_short: Too short (less than %{count} characters)
       wrong_length: Needs to be %{count} characters long
       not_saved: Not saved
+  form_tags: "Tags"

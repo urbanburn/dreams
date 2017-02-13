@@ -102,6 +102,8 @@ he:
   form_dream_website_short: "אתר החלום"
 
   form_dream_point_of_contact_email: "איש הקשר שלכם ממחלקת קשרי אמנים"
+  dream_safety_file_comments_nop_message: "הידד! אין לך מה לעדכן כרגע..."
+  dream_safety_file_comments_update: "עדכן הערות"
 
   form_project_management: "ניהול הפרויקט"
   form_project_management_crew: "חברי הצוות ובעלי תפקידים"
@@ -410,6 +412,7 @@ he:
   dream_need_to_have_max_budget: "החלום צריך תחילה להגדיר מקסימום תקציב. אנא פנה לבעל החלום ואו למדריכים החלומות"
   security_more_grants: "שגיאת מציאות. לא ניתן לתת יותר לבבות ממה שיש לך כרגע. ניסית לתת %{granted} ויש לך %{current_user_grants}. נסיון יפה."
   security_cant_delete_dreams_you_dont_own: "שגיאה - אתה לא יכול למחוק חלום שלא שייך לך - האקר הצטרף אלינו"
+  security_cant_tag_dreams_you_dont_own: "שגיאה - רק מדריכים יכולים לתייג חלומות. רוצה לעזור לנו?"
   security_cant_edit_dreams_you_dont_own: "שגיאה - אתה לא יכול לערוך חלום שלא שייך לך - האקר הצטרף אלינו"
   security_cant_change_images_you_dont_own: "שגיאה - אתה לא יכול לשנות תמונה שלא שייכת לך - האקר הצטרף אלינו"
   dream_not_found: 'החלום שחיפשת לא נמצא. האם תרצי ליצור חלום חדש?'
@@ -422,6 +425,8 @@ he:
   yes_text: "כן"
   no_text: "לא"
   or_text: "או"
+
+  tags_saved: 'התגיות נשמרו בהצלחה'
 
   recaptcha:
     errors:
@@ -609,11 +614,13 @@ he:
         projectmgmt_is_dream_near_theme_camp: :form_project_management_is_dream_near_theme_camp
         projectmgmt_dream_pre_construction_site: :form_project_management_dream_pre_construction_site
         dream_point_of_contact_email: :form_dream_point_of_contact_email
+        safety_file_comments: "הערות תיק בטיחות"
         google_drive_folder_path: תיקייה בדרייב
         google_drive_budget_file_path: מסמך תקציב
         en_name: שם באנגלית
         en_subtitle: תקציר באנגלית
         id: מזהה
+        tags: תגיות
       person: &person
         name: 'שם'
         email: "אימייל"
@@ -811,3 +818,4 @@ he:
       x_seconds:
         one: שניה אחת
         other: "%{count} שניות"
+  form_tags: "תגיות"

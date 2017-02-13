@@ -20,6 +20,8 @@ class Camp < ActiveRecord::Base
   
   accepts_nested_attributes_for :people, :roles, allow_destroy: true
 
+  acts_as_taggable
+
   validates :creator, presence: true
   validates :name, presence: true
   validates :subtitle, presence: true
@@ -129,15 +131,27 @@ class Camp < ActiveRecord::Base
   # Used by ActiveAdmin
   scope :default_select, lambda { |except=%w(safetybag_firstMemberName safetybag_firstMemberEmail safetybag_secondMemberName safetybag_secondMemberEmail)|
     tn = table_name
-    select((column_names-except).map { |c| "#{tn}.#{c}" }.join(', '))
+    names = (column_names-except).map { |c| "#{tn}.#{c}" }.join(', ')
+    select(names).group(names)
   }
 
   scope :displayed, -> {
-    default_select.joins("LEFT JOIN roles ON (roles.identifier = '#{:manager}')")
-        .joins("LEFT JOIN people ON (people.camp_id = camps.id)")
-        .joins("LEFT JOIN people_roles pr ON (pr.role_id = roles.id)")
-        .where('people.id = pr.person_id')
-        .select('people.name manager_name, people.email manager_email, people.phone_number manager_phone')
+    q = default_select.joins("LEFT JOIN roles ON (roles.identifier = '#{:manager}')")
+            .joins("LEFT JOIN people ON (people.camp_id = camps.id)")
+            .joins("LEFT JOIN people_roles pr ON (pr.role_id = roles.id)")
+            .where('people.id = pr.person_id')
+    
+    if connection.adapter_name == 'SQLite'
+      q.select('people.name manager_name, people.email manager_email, people.phone_number manager_phone')
+    else
+      q.select('ARRAY_AGG(people.name) manager_name,
+                ARRAY_AGG(people.email) manager_email,
+                ARRAY_AGG(people.phone_number) manager_phone')
+    end
+  }
+
+  scope :displayed_with_tags, -> {
+    displayed.includes(:tags)
   }
 
   # before_save do
