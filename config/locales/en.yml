@@ -250,6 +250,9 @@ en:
   form_dream_scholarship_post_desc: Here are some useful links for your convenience
   form_dream_scholarship_post_desc_criterions: Criteria
   form_dream_scholarship_post_desc_faq: FAQ
+
+  form_click_to_edit_html: <a>Click to edit</a>
+
   form_safety_head: Safety Portfolio
   form_safety_head_description: Safety Portfolio and placement on the Playa must be
     completed before March 15, 2017
@@ -362,6 +365,8 @@ en:
   update_dream: Update Dream!
   edit_dream: Edit Dream
   manage_images: Manage Images
+  open_dream_for_guide_edit: Open dream for guide editing
+  open_dream_for_guide_edit_view_only: Lock dream for View only
   give_grants: Give Grants
   i_gift_thee_grants: Donate to dream
   no_granting_yet: No granting for this dream yet!
@@ -390,6 +395,7 @@ en:
   save_camp: Save and continue
   done_camp: Done
   update_point_of_contact: Update contact
+  press_to_edit: Press on any field to edit
   actions_headline: Actions
   creation_safetybaginfo_headline: Safetyfile info (Shown only to you,dreamer)
   turn_off_granting: Turn off granting
