@@ -700,8 +700,9 @@
 
   .combo
     = form.label t("form_program_activity")
+    .field-description
+      = t("form_program_activity_desc")
     = best_in_place_if @can_edit, @camp, :program_special_activity, html_attrs: {maxlength: 4096, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
-    = t("form_program_activity_desc")
 
   - if Rails.configuration.x.firestarter_settings["safetybag"]
     
