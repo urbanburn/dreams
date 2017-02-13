@@ -44,26 +44,15 @@
   $(function() {
     $("textarea").autoGrow();
   });
-
-- if (current_user && (current_user == @camp.creator))
-  - can_edit = true
-- if (current_user && (current_user.guide || current_user.admin))
-  - can_edit = @just_view
-
-
-- if (@just_view)
-  = link_to t(:open_dream_for_guide_edit_view_only), edit_camp_path(id: @camp.id), class: "btn btn-success"
-- else
-  = link_to t(:open_dream_for_guide_edit), edit_camp_path(id: @camp.id, just_view: !(@just_view)), class: "btn btn-success"
-  :javascript
-    $(function() {
-      $('input[type=radio],input[type=checkbox]').each((i,e) => { $(e).attr('disabled', true);});
-    });
 %br
 %br
 
 = simple_form_for @camp, :html => {:dir => I18n.t(:html_direction), :id => 'camp-form' } do |form|
   = render 'dont_miss_out', except: nil
+
+  .pink-div
+    = t("press_to_edit")
+
   .header-heading
     = t("form_basics_headline")
 
@@ -78,7 +67,7 @@
     .field-description
       = t("form_dream_name_guidetext_html")
     %blockquote
-      = best_in_place_if can_edit, @camp, :name, html_attrs: {maxlength: 64, class: "form-control"}
+      = best_in_place_if @can_edit, @camp, :name, html_attrs: {maxlength: 64, class: "form-control"}
 
   - if Rails.configuration.x.firestarter_settings["multi_lang_support"]
     .combo
@@ -86,7 +75,7 @@
       %span.label.label-success
         =t("public")
       %blockquote
-        = best_in_place_if can_edit,@camp, :en_name, html_attrs: {maxlength: 64, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit,@camp, :en_name, html_attrs: {maxlength: 64, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
 
   .combo#subtitle
     = form.label t("form_subtitle_label")
@@ -95,7 +84,7 @@
     .field-description
       = t("form_subtitle_guidetext_html")
     %blockquote
-      = best_in_place_if can_edit, @camp, :subtitle, html_attrs: {maxlength: 255, class: "form-control"},as: :textarea, display_with: :simple_format
+      = best_in_place_if @can_edit, @camp, :subtitle, html_attrs: {maxlength: 255, class: "form-control"},as: :textarea, display_with: :simple_format
 
   - if Rails.configuration.x.firestarter_settings["multi_lang_support"]
     .combo
@@ -103,7 +92,7 @@
       %span.label.label-success
         =t("public")
       %blockquote
-        = best_in_place_if can_edit, @camp, :en_subtitle, html_attrs: {maxlength: 255, class: "form-control"},as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :en_subtitle, html_attrs: {maxlength: 255, class: "form-control"},as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo#contact_name
     = form.label t("form_creator_name_label")
@@ -112,7 +101,7 @@
     .field-description
       = t("form_creator_name_guidetext_html")
     %blockquote
-      = best_in_place_if can_edit, @camp, :contact_name, html_attrs: {maxlength: 64, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :contact_name, html_attrs: {maxlength: 64, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
 
   .combo#visability
     = form.label t("form_dream_visability")
@@ -131,21 +120,21 @@
       .field-description
         = t("form_contact_phone_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :contact_phone, html_attrs: {maxlength: 64, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :contact_phone, html_attrs: {maxlength: 64, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label t("form_about_the_artist_label")
     %span.label.label-success
       =t("public")
     %blockquote
-      = best_in_place_if can_edit, @camp, :about_the_artist, html_attrs: {maxlength: 1024, class: "form-control"},as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :about_the_artist, html_attrs: {maxlength: 1024, class: "form-control"},as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label t("form_dream_website_label")
     %span.label.label-success
       =t("public")
     %blockquote  
-      = best_in_place_if can_edit, @camp, :website, html_attrs: {maxlength: 512, class: "form-control"}, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :website, html_attrs: {maxlength: 512, class: "form-control"}, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo#description
     - if Rails.configuration.x.firestarter_settings["description"]
@@ -155,7 +144,7 @@
       .field-description
         = t("form_description_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :description, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :description, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo#electricity
     - if Rails.configuration.x.firestarter_settings["electricity"]
@@ -163,13 +152,13 @@
       .field-description
         = t("form_electricity_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :electricity, html_attrs: {maxlength: 256, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :electricity, html_attrs: {maxlength: 256, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo#fire
     - if Rails.configuration.x.firestarter_settings["fire"]
       = form.label t("form_fire_label")
       %blockquote
-        = best_in_place_if can_edit, @camp, :fire, html_attrs: {maxlength: 512, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :fire, html_attrs: {maxlength: 512, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
       = t("form_fire_guidetext_html")
 
   .combo#noise
@@ -178,7 +167,7 @@
       .field-description
         = t("form_noise_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :noise, html_attrs: {maxlength: 256, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :noise, html_attrs: {maxlength: 256, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
 
   .combo#nature
     - if Rails.configuration.x.firestarter_settings["nature"]
@@ -186,7 +175,7 @@
       .field-description
         = t("form_nature_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :nature, html_attrs: {maxlength: 512, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :nature, html_attrs: {maxlength: 512, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo#recycling
     - if Rails.configuration.x.firestarter_settings["recycling"]
@@ -194,7 +183,7 @@
       .field-description
         = t("form_recycling_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :recycling, html_attrs: {maxlength: 512, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :recycling, html_attrs: {maxlength: 512, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo#plan
     - if Rails.configuration.x.firestarter_settings["plan"]
@@ -202,7 +191,7 @@
       .field-description
         = t("form_plan_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :plan, html_attrs: {maxlength: 1024, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :plan, html_attrs: {maxlength: 1024, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo#light
     - if Rails.configuration.x.firestarter_settings["light"]
@@ -210,7 +199,7 @@
       .field-description
         = t("form_light_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :light, html_attrs: {maxlength: 512, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :light, html_attrs: {maxlength: 512, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
 
   .combo#moop
     - if Rails.configuration.x.firestarter_settings["moop"]
@@ -218,7 +207,7 @@
       .field-description
         = t("form_moop_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :moop, html_attrs: {maxlength: 1024, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :moop, html_attrs: {maxlength: 1024, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo#cocreation
     - if Rails.configuration.x.firestarter_settings["cocreation"]
@@ -228,7 +217,7 @@
       .field-description
         = t("form_cocreation_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :cocreation, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :cocreation, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
 
   .combo#neighbors
@@ -237,7 +226,7 @@
       .field-description
         = t("form_neighbors_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :neighbors, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :neighbors, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   %br
   %br
@@ -252,7 +241,7 @@
     .field-description
       = t("form_spec_physical_description_guidetext_html")
     %blockquote
-      = best_in_place_if can_edit, @camp, :spec_physical_description, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :spec_physical_description, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .row
     .combo.col-xs-12
@@ -262,22 +251,22 @@
     .col-xs-4
       = form.label t("form_spec_length_label")
       %blockquote
-        = best_in_place_if can_edit, @camp, :spec_length, html_attrs: {maxlength: 128, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :spec_length, html_attrs: {maxlength: 128, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
     .col-xs-4
       = form.label t("form_spec_width_label")
       %blockquote
-        = best_in_place_if can_edit, @camp, :spec_width, html_attrs: {maxlength: 128, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :spec_width, html_attrs: {maxlength: 128, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
     .col-xs-4
       = form.label t("form_spec_height_label")
       %blockquote
-        = best_in_place_if can_edit, @camp, :spec_height, html_attrs: {maxlength: 128, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :spec_height, html_attrs: {maxlength: 128, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
 
   .combo.col-xs-12
     = form.label t("form_spec_visual_night_day_label")
     .field-description
       = t("form_spec_visual_night_day_guidetext_html")
     %blockquote
-      = best_in_place_if can_edit, @camp, :spec_visual_night_day, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :spec_visual_night_day, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo.col-xs-12
     = form.label :spec_is_electricity
@@ -290,12 +279,12 @@
       .field-description
         = t("form_spec_electricity_details_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :spec_electricity_details, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :spec_electricity_details, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
     .combo
       = form.label :spec_electricity_how
       %blockquote
-        = best_in_place_if can_edit, @camp, :spec_electricity_how, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :spec_electricity_how, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
     .combo
       = form.label :spec_electricity_is_daytime
@@ -304,7 +293,7 @@
     .combo
       = form.label :spec_electricity_watt
       %blockquote
-        = best_in_place_if can_edit, @camp, :spec_electricity_watt, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :spec_electricity_watt, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   %br
   %br
@@ -314,14 +303,14 @@
   .combo
     = form.label t("form_dream_prop_philosophy")
     %blockquote
-      = best_in_place_if can_edit, @camp, :dreamprop_philosophy, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :dreamprop_philosophy, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label t("form_dream_prop_inspiration")
     .field-description
       = t("form_dream_prop_inspiration_guidetext_html")
     %blockquote
-      = best_in_place_if can_edit, @camp, :dreamprop_inspiration, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :dreamprop_inspiration, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .h3
     = t("form_dream_prop_interactivity")
@@ -331,7 +320,7 @@
     .field-description
       = t("form_dream_prop_interactivity_audience_participation_guidetext_html")
     %blockquote
-      = best_in_place_if can_edit, @camp, :dreamprop_interactivity_audience_participation, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :dreamprop_interactivity_audience_participation, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label :dreamprop_interactivity_is_fire_present
@@ -343,7 +332,7 @@
       .field-description
         = t("form_dream_prop_interactivity_fire_present_desc_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :dreamprop_interactivity_fire_present_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :dreamprop_interactivity_fire_present_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label :dreamprop_interactivity_is_sound
@@ -355,7 +344,7 @@
       .field-description
         = t("form_dream_prop_interactivity_sound_desc_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :dreamprop_interactivity_sound_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :dreamprop_interactivity_sound_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label :dreamprop_interactivity_is_fire_event
@@ -367,7 +356,7 @@
       .field-description
         = t("form_dream_prop_interactivity_fire_event_desc_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :dreamprop_interactivity_fire_event_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :dreamprop_interactivity_fire_event_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .h3
     = t("form_dream_prop_community")
@@ -390,7 +379,7 @@
       .field-description
         = t("form_dream_prop_community_context_desc_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :dreamprop_community_context_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :dreamprop_community_context_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label :dreamprop_community_is_interested_in_publicity
@@ -409,7 +398,7 @@
       .field-description
         = t("form_dream_prop_theme_annual_desc_guidetext_html")
       %blockquote
-        = best_in_place_if can_edit, @camp, :dreamprop_theme_annual_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+        = best_in_place_if @can_edit, @camp, :dreamprop_theme_annual_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   %br
   .header-heading
@@ -422,7 +411,7 @@
       .combo.col-xs-7{ style: 'float:' + I18n.t('lang_direction')}
         = form.label t("form_safetybag_crewsize_label")
         %blockquote
-          = best_in_place_if can_edit, @camp, :safetybag_crewsize, html_attrs: {maxlength: 5, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+          = best_in_place_if @can_edit, @camp, :safetybag_crewsize, html_attrs: {maxlength: 5, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
         %br
 
   .row
@@ -433,11 +422,12 @@
     = form.fields_for :people do |person|
       = render 'person_fields', :f => person, :camp_id => @camp.id
   
-  .row
-    .links.col-xs-12
-      = link_to_add_association t('add_a_new_person'), form, :people, render_options: { locals: { camp_id: @camp.id } }, class: 'btn btn-success', id: 'add-new-person'
-      %br
-      %br
+  - if @can_edit
+    .row
+      .links.col-xs-12
+        = link_to_add_association t('add_a_new_person'), form, :people, render_options: { locals: { camp_id: @camp.id } }, class: 'btn btn-success', id: 'add-new-person'
+        %br
+        %br
 
   .row
     .combo.col-xs-12
@@ -454,7 +444,7 @@
     %br
     = t("form_project_management_dream_pre_construction_site_guidetext_html")
     %blockquote
-      = best_in_place_if can_edit, @camp, :projectmgmt_dream_pre_construction_site, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :projectmgmt_dream_pre_construction_site, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   %br
   %br
@@ -492,15 +482,15 @@
       .combo
         = form.label t("form_dream_scholarship_budget_min_original")
         %blockquote
-          = best_in_place_if can_edit, @camp, :dreamscholarship_budget_min_original, html_attrs: {maxlength: 6, class: "form-control"}, place_holder: t(:form_click_to_edit_html), display_with: :number_to_currency, :helper_options => {:unit => "₪", precision:0}
+          = best_in_place_if @can_edit, @camp, :dreamscholarship_budget_min_original, html_attrs: {maxlength: 6, class: "form-control"}, place_holder: t(:form_click_to_edit_html), display_with: :number_to_currency, :helper_options => {:unit => "₪", precision:0}
 
       .combo
         = form.label t("form_dream_scholarship_budget_max_original")
         %blockquote
-          = best_in_place_if can_edit, @camp, :dreamscholarship_budget_max_original, html_attrs: {maxlength: 6, class: "form-control"}, place_holder: t(:form_click_to_edit_html), display_with: :number_to_currency, :helper_options => {:unit => "₪", precision:0}
+          = best_in_place_if @can_edit, @camp, :dreamscholarship_budget_max_original, html_attrs: {maxlength: 6, class: "form-control"}, place_holder: t(:form_click_to_edit_html), display_with: :number_to_currency, :helper_options => {:unit => "₪", precision:0}
         = form.label t("form_dream_scholarship_budget_max_original_desc")
         %blockquote
-          = best_in_place_if can_edit, @camp, :dreamscholarship_budget_max_original_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+          = best_in_place_if @can_edit, @camp, :dreamscholarship_budget_max_original_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
       %br
       .budget
@@ -514,7 +504,7 @@
         .field-description
           = t("form_dream_scholarship_bank_account_info_guidetext_html")
         %blockquote
-          = best_in_place_if can_edit, @camp, :dreamscholarship_bank_account_info, html_attrs: {maxlength: 128, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+          = best_in_place_if @can_edit, @camp, :dreamscholarship_bank_account_info, html_attrs: {maxlength: 128, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
       .h3
         = t("form_dream_scholarship_financial_conduct")
@@ -526,14 +516,14 @@
         .field-description
           = t("form_dream_scholarship_financial_conduct_intial_budget_desc")
         %blockquote
-          = best_in_place_if can_edit, @camp, :dreamscholarship_financial_conduct_intial_budget_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+          = best_in_place_if @can_edit, @camp, :dreamscholarship_financial_conduct_intial_budget_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
       .combo
         = form.label t("form_dream_scholarship_financial_conduct_money_raise_desc")
         .field-description
           = t("form_dream_scholarship_financial_conduct_money_raise_desc_guidetext_html")
         %blockquote
-          = best_in_place_if can_edit, @camp, :dreamscholarship_financial_conduct_money_raise_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+          = best_in_place_if @can_edit, @camp, :dreamscholarship_financial_conduct_money_raise_desc, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
       .h3
         = t("form_dream_scholarship_execution_potential")
@@ -543,14 +533,14 @@
         .field-description
           = t("form_dream_scholarship_execution_potential_previous_experience_guidetext_html")
         %blockquote
-          = best_in_place_if can_edit, @camp, :dreamscholarship_execution_potential_previous_experience, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+          = best_in_place_if @can_edit, @camp, :dreamscholarship_execution_potential_previous_experience, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
       .combo
         = form.label t("form_dream_scholarship_execution_potential_work_plan")
         .field-description
           = t("form_dream_scholarship_execution_potential_work_plan_guidetext_html")
         %blockquote
-          = best_in_place_if can_edit, @camp, :dreamscholarship_execution_potential_work_plan, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+          = best_in_place_if @can_edit, @camp, :dreamscholarship_execution_potential_work_plan, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
       %br
       .combo
@@ -612,49 +602,49 @@
     .field-description
       = t("form_safety_equipment_guidetext_html")
     %blockquote
-      = best_in_place_if can_edit, @camp, :safety_equipment, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :safety_equipment, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label t("form_safety_how_to_build_safety")
     .field-description
       = t("form_safety_how_to_build_safety_desc")
     %blockquote
-      = best_in_place_if can_edit, @camp, :safety_how_to_build_safety, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :safety_how_to_build_safety, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label t("form_safety_how")
     .field-description
       = t("form_safety_how_desc")
     %blockquote
-      = best_in_place_if can_edit, @camp, :safety_how, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)    
+      = best_in_place_if @can_edit, @camp, :safety_how, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)    
 
   .combo
     = form.label t("form_safety_grounding")
     .field-description
       = t("form_safety_grounding_desc")
     %blockquote
-      = best_in_place_if can_edit, @camp, :safety_grounding, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :safety_grounding, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label t("form_safety_securing")
     .field-description
       = t("form_safety_securing_desc")
     %blockquote
-      = best_in_place_if can_edit, @camp, :safety_securing, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :safety_securing, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label t("form_safety_securing_parts")
     .field-description
       = t("form_safety_securing_parts_desc")
     %blockquote
-      = best_in_place_if can_edit, @camp, :safety_securing_parts, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :safety_securing_parts, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label t("form_safety_signs")
     .field-description
       = t("form_safety_signs_desc")
     %blockquote
-      = best_in_place_if can_edit, @camp, :safety_signs, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :safety_signs, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   %br
   %br
@@ -666,7 +656,7 @@
     .field-description
       = t("form_location_info_desc")
     %blockquote
-      = best_in_place_if can_edit, @camp, :location_info, html_attrs: {maxlength: 1024, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :location_info, html_attrs: {maxlength: 1024, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   %br
   %br
@@ -679,38 +669,38 @@
     .input-group
       %span.input-group-addon
         = t("form_program_hebrew")
-      = best_in_place_if can_edit, @camp, :program_dream_name_he, html_attrs: {maxlength: 256, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :program_dream_name_he, html_attrs: {maxlength: 256, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
 
     .input-group
       %span.input-group-addon
         = t("form_program_english")  
-      = best_in_place_if can_edit, @camp, :program_dream_name_en, html_attrs: {maxlength: 256, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :program_dream_name_en, html_attrs: {maxlength: 256, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
 
     .combo
       = form.label t("form_program_dreamer")
     .input-group
       %span.input-group-addon
         = t("form_program_hebrew")  
-      = best_in_place_if can_edit, @camp, :program_dreamer_name_he, html_attrs: {maxlength: 256, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :program_dreamer_name_he, html_attrs: {maxlength: 256, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
     .input-group
       %span.input-group-addon
         = t("form_program_english")  
-      = best_in_place_if can_edit, @camp, :program_dreamer_name_en, html_attrs: {maxlength: 256, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :program_dreamer_name_en, html_attrs: {maxlength: 256, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
 
     .combo
       = form.label t("form_program_description")
     .input-group
       %span.input-group-addon
         = t("form_program_hebrew")  
-      = best_in_place_if can_edit, @camp, :program_dream_about_he, html_attrs: {maxlength: 4096, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :program_dream_about_he, html_attrs: {maxlength: 4096, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
     .input-group
       %span.input-group-addon
         = t("form_program_english")  
-      = best_in_place_if can_edit, @camp, :program_dream_about_en, html_attrs: {maxlength: 4096, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+      = best_in_place_if @can_edit, @camp, :program_dream_about_en, html_attrs: {maxlength: 4096, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label t("form_program_activity")
-    = best_in_place_if can_edit, @camp, :program_special_activity, html_attrs: {maxlength: 4096, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
+    = best_in_place_if @can_edit, @camp, :program_special_activity, html_attrs: {maxlength: 4096, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
     = t("form_program_activity_desc")
 
   - if Rails.configuration.x.firestarter_settings["safetybag"]

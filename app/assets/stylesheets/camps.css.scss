@@ -364,7 +364,6 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  text-align: left;
   padding: 14px 13px;
   z-index: 1;
   background: #f3f3f3;
@@ -422,6 +421,10 @@ body {
 #add-new-person {
   color: white !important;
   text-decoration: none !important;
+}
+
+.pink-div {
+  color: $c_pinky;
 }
 
 .program {
