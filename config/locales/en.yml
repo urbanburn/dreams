@@ -383,10 +383,10 @@ en:
   created_new_dream: Yeah! You've created a dream. You can add info to your dream
     now or save and continue adding info in the future
   what_is_this_title: What is this?
-  what_is_this_text_html: Congratulations! You've stumbled upon something special.
-    Midburn is a participatory festival that takes place in Jerucham lake in Israel
-    on Dec 29-31. It's a fully participatory event where everything is created by
-    the participants themselves, without any spectators.
+  what_is_this_text_html: Congratulations! You've stumbled upon something special!
+    <b>Midburn</b> is some awesome fucking shit. We dream together and breathe life
+    into our mad and wondrous creations. Dreams need matter to come to life, and this
+    is where we share resources to make that happen.
   creation_info_headline: Details
   next_random_dream: Next random dream
   contact_name: Contact Name
