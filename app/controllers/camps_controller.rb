@@ -2,6 +2,7 @@ class CampsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :load_camp!, except: [:index, :new, :create]
   before_action :enforce_delete_permission!, only: [:destroy, :archive]
+  before_action :enforce_guide!, only: %i(tag)
   before_action :load_lang_detector, only: %i(show index)
 
   def index
@@ -31,6 +32,7 @@ class CampsController < ApplicationController
   end
 
   def edit
+    @just_view = params[:just_view]
   end
 
   def create
@@ -115,7 +117,7 @@ class CampsController < ApplicationController
   end
 
   def update
-    if (@camp.creator != current_user) and (!current_user.admin)
+    if (@camp.creator != current_user) and !current_user.admin and !current_user.guide
       flash[:alert] = "#{t:security_cant_edit_dreams_you_dont_own}"
       redirect_to camp_path(@camp) and return
     end
@@ -124,12 +126,25 @@ class CampsController < ApplicationController
       if params[:done] == '1'
         redirect_to camp_path(@camp)
       else
-        redirect_to edit_camp_path(id: @camp.id)
+        respond_to do |format|
+          format.html { redirect_to edit_camp_path(id: @camp.id) }
+          format.json { respond_with_bip(@camp) }
+        end
       end
     else
-      flash.now[:notice] = "#{t:errors_str}: #{@camp.errors.full_messages.uniq.join(', ')}"
-      render :edit
+      respond_to do |format|
+        flash.now[:alert] = "#{t:errors_str}: #{@camp.errors.full_messages.uniq.join(', ')}"
+        format.html { render :action => "edit" }
+        format.json { respond_with_bip(@camp) }
+      end
     end
+  end
+
+  def tag
+    @camp.update_attributes(tag_list: params.require(:camp).require(:tag_list))
+
+    flash[:notice] = "#{t:tags_saved}"
+    redirect_to camp_path(@camp)
   end
 
   def destroy
@@ -184,6 +199,13 @@ class CampsController < ApplicationController
     if @camp.nil?
       flash[:alert] = t('dream_not_found')
       redirect_to camps_path
+    end
+  end
+
+  def enforce_guide!
+    if (!current_user.admin) && (!current_user.guide)
+      flash[:alert] = "#{t:security_cant_tag_dreams_you_dont_own}"
+      redirect_to camp_path(@camp)
     end
   end
 

@@ -78,6 +78,8 @@ en:
   form_dream_website_short: The dream website
   
   form_dream_point_of_contact_email: Your contact person from Art Department
+  dream_safety_file_comments_nop_message: Hurray! Nothing for you to update right now...
+  dream_safety_file_comments_update: Update Comments
 
   form_project_management: Project Management
   form_project_management_crew: Team Members
@@ -257,6 +259,9 @@ en:
   form_dream_scholarship_post_desc: Here are some useful links for your convenience
   form_dream_scholarship_post_desc_criterions: Criteria
   form_dream_scholarship_post_desc_faq: FAQ
+
+  form_click_to_edit_html: <a>Click to edit</a>
+
   form_safety_head: Safety Portfolio
   form_safety_head_description: Safety Portfolio and placement on the Playa must be
     completed before March 15, 2017
@@ -368,6 +373,8 @@ en:
   update_dream: Update Dream!
   edit_dream: Edit Dream
   manage_images: Manage Images
+  open_dream_for_guide_edit: Open dream for guide editing
+  open_dream_for_guide_edit_view_only: Lock dream for View only
   give_grants: Give Grants
   i_gift_thee_grants: Donate to dream
   no_granting_yet: No granting for this dream yet!
@@ -394,6 +401,7 @@ en:
   save_camp: Save and continue
   done_camp: Done
   update_point_of_contact: Update contact
+  press_to_edit: Press on any field to edit
   actions_headline: Actions
   creation_safetybaginfo_headline: Safetyfile info (Shown only to you,dreamer)
   turn_off_granting: Turn off granting
@@ -465,6 +473,7 @@ en:
     tried gifting %{granted} grants. you have %{current_user_grants}. nice try.
   security_cant_delete_dreams_you_dont_own: One cannot delete dreams he dont own -
     hacker come join us
+  security_cant_tag_dreams_you_dont_own: Only guides can tag dreams. Come hack with us!
   security_cant_edit_dreams_you_dont_own: One cannot delete dreams he dont own - hacker
     come join us
   security_cant_change_images_you_dont_own: One cannot change image he dont own - hacker come join us
@@ -485,6 +494,7 @@ en:
     go_to_current_version: Go to current version
     no_older_version: No older version found
   activeadmin:
+    info: Info
     recent_updated: Recently Updated
     item: Dream
     modified_at: Modified at
@@ -657,6 +667,7 @@ en:
         projectmgmt_is_theme_camp_dream: :form_project_management_is_theme_camp_dream
         projectmgmt_is_dream_near_theme_camp: :form_project_management_is_dream_near_theme_camp
         projectmgmt_dream_pre_construction_site: :form_project_management_dream_pre_construction_site
+        safety_file_comments: Safety File Comments
       person: &person
         name: Name
         email: Email
@@ -777,3 +788,4 @@ en:
       too_short: Too short (less than %{count} characters)
       wrong_length: Needs to be %{count} characters long
       not_saved: Not saved
+  form_tags: "Tags"
