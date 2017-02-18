@@ -150,3 +150,8 @@ There is a feature that shows a notification to users - reminder of important da
 You can alter `lockdown.yml` file with your important dates and then change in `en.xml` `dont_miss_out->actions->action_name`
 It will be reminded to your users at the `Me` page. `View Dream` & `Edit Dream` page
 
+## Ability to Show/Edit Safety File Comments
+We've added the ability to show safety file comments for the dream-creator in the dream page. This field is editable by admin/guides only and it is visible to users on the show dream page - this could serve as a way to communicate with the artist outside of his email.
+
+You will need to set the following env var:
+* `SHOW_SAFETY_FILE_COMMENTS=true`

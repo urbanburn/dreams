@@ -55,6 +55,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (4.0.0)
+      activerecord (>= 4.0)
     addressable (2.4.0)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
@@ -66,6 +68,9 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     blueimp-gallery (2.11.0.1)
@@ -377,8 +382,10 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  acts-as-taggable-on (~> 4.0)
   awesome_print
   aws-sdk (< 2)
+  best_in_place (~> 3.0.1)
   blueimp-gallery
   byebug
   cancan
