@@ -54,8 +54,6 @@
 
   .combo#name
     = form.label t("form_dream_name_label")
-    %span.label.label-success
-      =t("public")
     .field-description
       = t("form_dream_name_guidetext_html")
     %blockquote
@@ -64,15 +62,11 @@
   - if Rails.configuration.x.firestarter_settings["multi_lang_support"]
     .combo
       = form.label t("form_dream_name_en_label")
-      %span.label.label-success
-        =t("public")
       %blockquote
         = best_in_place_if @can_edit,@camp, :en_name, html_attrs: {maxlength: 64, class: "form-control"}, place_holder: t(:form_click_to_edit_html)
 
   .combo#subtitle
     = form.label t("form_subtitle_label")
-    %span.label.label-success
-      =t("public")
     .field-description
       = t("form_subtitle_guidetext_html")
     %blockquote
@@ -81,15 +75,11 @@
   - if Rails.configuration.x.firestarter_settings["multi_lang_support"]
     .combo
       = form.label t("form_subtitle_en_label")
-      %span.label.label-success
-        =t("public")
       %blockquote
         = best_in_place_if @can_edit, @camp, :en_subtitle, html_attrs: {maxlength: 255, class: "form-control"},as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo#contact_name
     = form.label t("form_creator_name_label")
-    %span.label.label-success
-      =t("public")
     .field-description
       = t("form_creator_name_guidetext_html")
     %blockquote
@@ -116,23 +106,17 @@
 
   .combo
     = form.label t("form_about_the_artist_label")
-    %span.label.label-success
-      =t("public")
     %blockquote
       = best_in_place_if @can_edit, @camp, :about_the_artist, html_attrs: {maxlength: 1024, class: "form-control"},as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo
     = form.label t("form_dream_website_label")
-    %span.label.label-success
-      =t("public")
     %blockquote  
       = best_in_place_if @can_edit, @camp, :website, html_attrs: {maxlength: 512, class: "form-control"}, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   .combo#description
     - if Rails.configuration.x.firestarter_settings["description"]
       = form.label t("form_description_label")
-      %span.label.label-success
-        =t("public")
       .field-description
         = t("form_description_guidetext_html")
       %blockquote
@@ -204,8 +188,6 @@
   .combo#cocreation
     - if Rails.configuration.x.firestarter_settings["cocreation"]
       = form.label t("form_cocreation_label")
-      %span.label.label-success
-        =t("public")
       .field-description
         = t("form_cocreation_guidetext_html")
       %blockquote
@@ -221,10 +203,10 @@
         = best_in_place_if @can_edit, @camp, :neighbors, html_attrs: {maxlength: 4096, class: "form-control"}, as: :textarea, display_with: :simple_format, place_holder: t(:form_click_to_edit_html)
 
   %br
-  .header-heading
-    = t("form_project_management")
   .h3
     = form.label t("form_project_management_crew")
+    %span.label.label-success
+      =t("private")
   
   - if Rails.configuration.x.firestarter_settings["crew_size"]
     .row
