@@ -292,6 +292,10 @@
             </div>
         <% end %>
 
+          <% if current_user %>
+              <br>
+              <%= t("activerecord.models.user.one") %> <%= @camp.creator.email %>
+          <% end %>
 
         <% if current_user &&
             ((@camp.creator == current_user) || (current_user.guide || current_user.admin)) %>
@@ -316,15 +320,12 @@
                         <%= button_to t(:archive_this_creation), :archive_camp,
                                       { method: :post, class: "btn btn-danger", data: { confirm: t(:are_you_sure) } } %>
                       <% end %>
-
-                      <% if current_user && (@camp.creator == current_user || current_user.admin) %>
-                        <%= button_to t(:delete_this_creation), { action: 'destroy' },
-                                      { method: :delete, class: "btn btn-danger", data: { confirm: t(:delete_are_you_sure) } } %>
-                      <% end %>
-
-                      <br>
-                      <%= t("activerecord.models.user.one") %> <%= @camp.creator.email %>
                     <% end %>
+
+                  <% if current_user && (@camp.creator == current_user || current_user.admin) %>
+                    <%= button_to t(:delete_this_creation), { action: 'destroy' },
+                                  { method: :delete, class: "btn btn-danger", data: { confirm: t(:delete_are_you_sure) } } %>
+                  <% end %>
 
                     <% if Rails.configuration.x.firestarter_settings["add_to_list"] %>
                         <br>
