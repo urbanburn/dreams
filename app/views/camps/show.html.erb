@@ -344,7 +344,7 @@
             </div>
         <% end %>
 
-        <% if current_user && (current_user.guide || current_user.admin) %>
+        <% if current_user %>
           <br>
           <div class="panel panel-default">
             <div class="panel-heading"><h2 class="header-sub-heading"><%=t :form_project_management_crew %></h2></div>
@@ -358,7 +358,9 @@
                       <br>
                       <%= person.name %>
                       <%= person.email %>
-                      <%= person.phone_number %>
+                      <% if current_user && (current_user.guide || current_user.admin) %>
+                        <%= person.phone_number %>
+                      <% end %>
                       <br>
                     </li>
                   <% end %>
