@@ -137,7 +137,7 @@ en:
     Quiet, Deep playa, Near camps, Near sounds camps, Far away from sound camps
 
   form_artgrants_headline: Art grant information
-  form_artgrants_text_html: <p>If you're not looking for an art grant, leave these fields blank.</p><p>Art grants are given by the Metaburn community. Each Metaburner has 10 art-grants to hand out. You can give all your grants to one project or spread them around. Once a grant has been gifted to a dream, it can't be taken back.</p>
+  form_artgrants_text_html: <p>If you're not looking for an art grant, leave these fields blank.</p><p>Art grants are given by the Urban Burn Stockholm community. Each member has 10 art-grants to hand out. You can give all your grants to one project or spread them around. Once a grant has been gifted to a dream, it can't be taken back.</p>
   form_minigrants_realcurrency_label: "Minumum number of grants needed:"
   form_minigrants_realcurrency_guidetext_html: Necessary minimum budget level, below which you won't get funded.
   form_maxigrants_realcurrency_label: "Grants needed to fully fund dream:"
@@ -170,7 +170,7 @@ en:
   form_spec_electricity_details_guidetext_html: What objects will require electricity
     in your art installation? Electric systems, computers, lighting, sound, triangle
     toasters etc.
-  form_dream_prop_interactivity_audience_participation_guidetext_html: At Midburn,
+  form_dream_prop_interactivity_audience_participation_guidetext_html: At Urban Burn Stockholm,
               the artists are encouraged to break the barriers between the art work and its
               viewers. Please share with us your vision regarding the level in which one could
               interact with the installation or influence it - climbing, touching, operating,
@@ -189,8 +189,8 @@ en:
   form_dream_prop_community_context_desc_guidetext_html: Cooperation during costruction,
               shared events with other communities etc.
   form_dream_prop_theme_annual_desc_guidetext_html: Does the art installation draw its inspiration from the annual "Lucid Dream" theme or supports the ten Burning Man principles?
-  form_dream_scholarship_head: Midburn Art Fund scholarship application
-  form_dream_scholarship_head_desc: 'If you wish to receive a stipend from Midburn''s
+  form_dream_scholarship_head: Urban Burn Stockholm Art Fund scholarship application
+  form_dream_scholarship_head_desc: 'If you wish to receive a stipend from Urban Burn's
     Art Fund, please fill in the following fields. This information will be added
     to any other information entered so far, and will be forwarded to the Art Fund
     for evaluation. Please take into consideration that detail and depth are key to
@@ -389,7 +389,7 @@ en:
     now or save and continue adding info in the future
   what_is_this_title: What is this?
   what_is_this_text_html: Congratulations! You've stumbled upon something special.
-    Metaburn is a platform that allows you to share your dreams.
+    Urban Burn Stockholm is a platform that allows you to share your dreams.
   creation_info_headline: Details
   next_random_dream: Next random dream
   contact_name: Contact Name
