@@ -2,13 +2,13 @@
 
 # Metaburn Dreams
 
-This is a platform to plan co-created events. It was originally created for Urban Burn Stockholm in 2016 and was then used for The Borderland in 2016 and For Midburnerot 2016 then Midburn 2017. It's being continuously and sporadically developed by a rag-tag team and will probably always be in beta. This version is set to be the mother of all versions.
+This is a platform to plan co-created events. It was originally created for Urban Burn Stockholm in 2016 and was then used for The Borderland in 2016 and For Midburnerot 2016 then Midburn 2017. It's being continuously and sporadically developed by a rag-tag team and will always be in beta. This version is set to be the mother of all versions.
 You can see it in action here: 
-* Midburn version: http://dreams.midburn.org/?lang=en
-* Midburnerot version:
-http://dreams.midburnerot.com/?lang=en
-* Borderland version:
-http://dreams.theborderland.se/
+* Midburn: http://dreams.midburn.org/?lang=en
+* Midburnerot: http://dreams.midburnerot.com/?lang=en
+* Borderland: http://dreams.theborderland.se/
+* Urban Burn Stockholm: http://artjump.burningman.nl/
+* Art Jump: http://artjump.burningman.nl/
 
 ## To get started
 
