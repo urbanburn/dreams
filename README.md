@@ -7,7 +7,7 @@ You can see it in action here:
 * Midburn: http://dreams.midburn.org/?lang=en
 * Midburnerot: http://dreams.midburnerot.com/?lang=en
 * Borderland: http://dreams.theborderland.se/
-* Urban Burn Stockholm: http://artjump.burningman.nl/
+* Urban Burn Stockholm: http://dreams.urbanburn.se/
 * Art Jump: http://artjump.burningman.nl/
 
 ## To get started
