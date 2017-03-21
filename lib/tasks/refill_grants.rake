@@ -4,9 +4,10 @@ desc "Refill grants to all users"
 task :refill_grants => [:environment] do
 
   User.all.each do |user|
-    puts user.email
-    puts user.grants
-    refill = Rails.application.config.grant_refill.to_i - user.grants.to_i
+    refill = 0
+    if Rails.application.config.grant_refill.to_i > user.grants.to_i
+      refill = Rails.application.config.grant_refill.to_i - user.grants.to_i
+    end
     counter = 0
     refill.times do
 
