@@ -10,7 +10,7 @@ task :refill_grants => [:environment] do
     counter = 0
     refill.times do
 
-      if Grant.sum(:amount)*Rails.application.config.coin_rate < Rails.application.config.max_budget_real.to_f
+      if (Grant.sum(:amount) + User.sum(:grants))*Rails.application.config.coin_rate < Rails.application.config.max_budget_real.to_f
         ActiveRecord::Base.transaction do
           user.grants += 1
           unless user.save
