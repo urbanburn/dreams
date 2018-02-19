@@ -127,10 +127,6 @@
             <% end %>
         <% end %>
 
-    <% if current_user && @camp.creator == current_user %>
-        <%= render 'camps/dont_miss_out', except: nil %>
-      <% end %>
-
     <!-- Creation text content -->
         <div class="camp-description">
             <b><%=t :form_summary %></b>
@@ -350,20 +346,7 @@
             <div class="panel-heading"><h2 class="header-sub-heading"><%=t :form_project_management_crew %></h2></div>
             <div class="panel-body">
               <span>
-                  <% @camp.people.each do |person| %>
-                  <li>
-                      <% person.roles.each do |role| %>
-                        <span class='label label-default'><%= t("project_roles." + role.identifier) %></span>
-                      <% end %>
-                      <br>
-                      <%= person.name %>
-                      <%= person.email %>
-                      <% if current_user && (current_user.guide || current_user.admin) %>
-                        <%= person.phone_number %>
-                      <% end %>
-                      <br>
-                    </li>
-                  <% end %>
+                  <%= @camp.creator.email %>
               </span>
             </div>
           </div>
@@ -389,7 +372,7 @@
                 <% if @camp.website.present? %>
                     <li>
                     <span class='dream-website'>
-                        <a href='<%= @camp.website %>'><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp<%=t :form_dream_website_short %></a>
+                        <a href='<%= @camp.website %>'><span class="glyphicon glyphicon-globe" aria-hidden="true"></span>&nbsp<%=@camp.website %></a>
                     </span>
                     </li>
                     <br>

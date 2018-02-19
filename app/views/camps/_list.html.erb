@@ -14,7 +14,7 @@
                         <% if camp.images.any? %>
                             <%= image_tag(camp.images.first.attachment.url(:square), :class => "grow") %>
                         <% else %>
-                            <%= image_tag('bsb_placeholder_square.jpg' , :class => "grow") %>
+                            <%= image_tag('bsb_placeholder_square.png' , :class => "grow") %>
                         <% end %>
 
                         <% @name = (Rails.configuration.x.firestarter_settings['multi_lang_support'] and camp.en_name.present? and I18n.locale.to_s == 'en')? camp.en_name : camp.name %>
@@ -53,10 +53,6 @@
         </div>
         <% end %>
 
-    </div>
-
-    <div class="top_message" align="center" dir=<%=t :html_direction %>>
-        <div class="col-xm-12"><%= paginate @camps %></div>
     </div>
 
 </div>

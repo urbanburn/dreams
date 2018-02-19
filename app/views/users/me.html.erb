@@ -7,7 +7,6 @@
 
 
 <% if user_signed_in? %>
-  <%= render 'camps/dont_miss_out', except: nil %>
   <% coin_image_path = image_path("coin.png") %>
   <div class="me col-md-5 col-xs-12" dir="<%=t :html_direction %>" style="float: <%=t :lang_direction%>">
     <div class="panel panel-default">

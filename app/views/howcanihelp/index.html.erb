@@ -4,7 +4,7 @@
   <%= javascript_include_tag 'blueimp_script' %> 
   <meta property="og:title" content="<%= t :how_can_i_help_title %>" />
   <meta property="og:description" content="<%= t :how_can_i_help_page_description %>" />
-  <meta property="og:image" content="<%= ENV['APP_URL'] %>assets/coverphoto.png" />
+  <meta property="og:image" content="<%= ENV['APP_URL'] %>assets/coverphoto.jpg" />
 <% end %>
 
 <div class="top_message" dir=<%=t :html_direction %>>
@@ -50,7 +50,7 @@
                       <% if camp.images.any? %>
                           <%= image_tag(camp.images.first.attachment.url(:square), :class => "grow") %>
                       <% else %>
-                          <%= image_tag('bsb_placeholder_square.jpg' , :class => "grow") %>
+                          <%= image_tag('bsb_placeholder_square.png' , :class => "grow") %>
                       <% end %>
 
                       <% @name = (Rails.configuration.x.firestarter_settings['multi_lang_support'] and camp.en_name.present? and I18n.locale.to_s == 'en')? camp.en_name : camp.name %>
